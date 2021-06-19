@@ -21,6 +21,8 @@ do
     find "${D}" -mindepth 1 -type d -exec rm -rf {} \;
 done
 
+mkdir outputs
+
 # Launch sherlock for solutions
 cd solutions ; ../sherlock -e swift $(echo ./*) > ../outputs/result.txt ; cd ..
 

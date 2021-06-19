@@ -66,14 +66,16 @@ if __name__ == '__main__':
 
     list_keys = list(keys)
     list_keys.sort()
-    matrix = numpy.ones(shape=(len(list_keys), len(list_keys)))
 
-    for authors, percantage in report.items():
-        first_index, second_index = list_keys.index(authors.first_name), list_keys.index(authors.second_name)
-        matrix[first_index][second_index] = percantage
-        matrix[second_index][first_index] = percantage
+    if len(list_keys) != 0:
+        matrix = numpy.ones(shape=(len(list_keys), len(list_keys)))
 
-    heatmap = sns.heatmap(matrix, annot=True, xticklabels=list_keys, yticklabels=list_keys)
-    figure = heatmap.get_figure()
-    figure.savefig("./outputs/plot.png")
-    plt.show()
+        for authors, percantage in report.items():
+            first_index, second_index = list_keys.index(authors.first_name), list_keys.index(authors.second_name)
+            matrix[first_index][second_index] = percantage
+            matrix[second_index][first_index] = percantage
+
+        heatmap = sns.heatmap(matrix, annot=True, xticklabels=list_keys, yticklabels=list_keys)
+        figure = heatmap.get_figure()
+        figure.savefig("./outputs/plot.png")
+        plt.show()
