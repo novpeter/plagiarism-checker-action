@@ -5,7 +5,7 @@ inputs:
     description: 'GitHub access token'
     required: true
   repository-name:
-    description: 'Name of repository'
+    description: 'Name of repository. Example "username/repository"'
     required: true
 runs:
   using: 'docker'
