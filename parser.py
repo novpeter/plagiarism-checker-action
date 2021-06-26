@@ -48,7 +48,7 @@ def parse_plagiarism_result(path):
             if report_dict.get(key) is None:
                 report_dict[key] = value
             else:
-                if report_dict.get(key) > value:
+                if report_dict.get(key) < value:
                     report_dict[key] = value
 
     return report_dict
@@ -75,7 +75,14 @@ if __name__ == '__main__':
             matrix[first_index][second_index] = percantage
             matrix[second_index][first_index] = percantage
 
-        heatmap = sns.heatmap(matrix, annot=True, xticklabels=list_keys, yticklabels=list_keys)
+        heatmap = sns.heatmap(matrix,
+                              annot=True,
+                              vmin=0,
+                              vmax=1,
+                              xticklabels=list_keys,
+                              yticklabels=list_keys,
+                              cmap='coolwarm')
+
         figure = heatmap.get_figure()
         figure.savefig("./outputs/plot.png")
         plt.show()
