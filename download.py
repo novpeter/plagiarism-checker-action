@@ -1,7 +1,10 @@
 import sys
+import os
 
 from github import Github
 from git import Repo
+from git import Git
+
 
 ACCESS_TOKEN = sys.argv[1]
 REPOSITORY_NAME = sys.argv[2]
@@ -19,11 +22,14 @@ def download_pulls():
     solutions will contain only .swift files
     """
     pulls = repo.get_pulls(state='open', sort='created', base='master')
+
     for pr in pulls:
-        author = pr.user.name
-        clone_url = pr.head.repo.clone_url
-        directory = f"./solutions/{author}"
-        Repo.clone_from(clone_url, directory)
+        branch = pr.head.ref
+        directory = f"./solutions/{pr.user.login}"
+        login = "novpeter"
+        password = "LE3vhbvAVuuP6TM"
+        remote = f"https://{login}:{password}@github.com/{REPOSITORY_NAME}.git"
+        Repo.clone_from(remote, directory, branch=branch)
 
 
 if __name__ == '__main__':
