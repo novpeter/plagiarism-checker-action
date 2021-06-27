@@ -85,4 +85,3 @@ if __name__ == '__main__':
 
         figure = heatmap.get_figure()
         figure.savefig("./outputs/plot.png")
-        plt.show()
