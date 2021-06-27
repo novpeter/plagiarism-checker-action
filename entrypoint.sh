@@ -7,8 +7,10 @@ export REPOSITORY_NAME=${2}
 gcc -o sherlock sherlock.c
 chmod +x sherlock
 
+tree
+
 # Run python script to download all pull requests
-python3 /download.py "${GITHUB_ACCESS_TOKEN}" "${REPOSITORY_NAME}"
+python3 ./download.py "${GITHUB_ACCESS_TOKEN}" "${REPOSITORY_NAME}"
 
 # Remove all not .swift files
 find ./solutions/ -not -name "*.swift" -type f -delete
@@ -31,4 +33,4 @@ mkdir outputs
 # Launch sherlock for solutions
 cd solutions ; ../sherlock -e swift $(echo ./*) > ../outputs/result.txt ; cd ..
 
-python3 /parser.py
+python3 ./parser.py
