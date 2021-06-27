@@ -8,7 +8,7 @@ gcc -o sherlock sherlock.c
 chmod +x sherlock
 
 # Run python script to download all pull requests
-#python3 download.py "${GITHUB_ACCESS_TOKEN}" "${REPOSITORY_NAME}"
+python3 download.py "${GITHUB_ACCESS_TOKEN}" "${REPOSITORY_NAME}"
 
 # Remove all not .swift files
 find ./solutions/ -not -name "*.swift" -type f -delete
