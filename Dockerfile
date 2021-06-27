@@ -8,5 +8,6 @@ COPY requirements.txt /requirements.txt
 
 RUN chmod 755 entrypoint.sh
 RUN pip install -r requirements.txt
+RUN tree
 
 ENTRYPOINT ["/entrypoint.sh"]
